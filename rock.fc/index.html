@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock paper sicssors page</title>
+  </head>
+  <body>
+    <script>
+      const choices = ["rock", "paper", "scissors"];
+      function game() {
+        for (let i=2; i <= 5; i++)
+        playround();
+      }
+      function playround() {
+        // for (let i =1; i <= playround; i++) {
+        let playerselection = playerchoice();
+        let computerselection = compchoice();
+        console.log(playerselection);
+        console.log(computerselection);
+        let winner = checkwinner(playerselection, computerselection);
+        console.log(winner);
+      }
+    
+      function playerchoice() {
+        let inlet = prompt("enter rock,paper,scissors");
+        while (inlet == null) {
+          inlet = prompt("enter rock,paper,scissors");
+        }
+        return inlet
+        // console.log(inlet);
+      }
+      function compchoice() {
+        let choice = choices[Math.floor(Math.random() * 3)];
+        // console.log(choice);
+        return choice;
+      }
+      function checkwinner(playerchoice, compchoice) {
+        if (playerchoice === compchoice) {
+          return "tie";
+        } else if (
+          (playerchoice === "rock" && compchoice === "scissors") ||
+          (playerchoice === "paper" && compchoice === "rock") ||
+          (playerchoice === "scissors" && compchoice === "paper")
+        ) {
+          return "playerwin";
+        } else {
+          return "computerwin";
+        }
+      }
+      playround();
+      game();
+    </script>
+  </body>
+</html>
